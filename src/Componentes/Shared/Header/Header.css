@@ -2,7 +2,7 @@ header {
   z-index: 9999 !important;
 }
 .active {
-  color: purple;
+  /* color: purple; */
   font-weight: bold;
 }
 @media (max-width: 767px) {

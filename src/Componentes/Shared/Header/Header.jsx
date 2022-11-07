@@ -6,8 +6,9 @@ const Header = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="container mx-auto sticky top-0 p-4 bg-white text-gray-800 justify-center">
-      <div className="container flex justify-between h-16 mx-auto">
+    <header className="sticky top-0 p-4 bg-white text-gray-800 justify-center">
+      <div className='container mx-auto'>
+      <div className="flex justify-between h-16">
         <Link
           to="/"
           aria-label="Back to homepage"
@@ -131,6 +132,7 @@ const Header = () => {
             ></Bars3Icon>
           )}
         </div>
+      </div>
       </div>
       <div
         className={`list_menu md:hidden absolute duration-500 ease-linear  w-full ${

@@ -6,9 +6,19 @@
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
+  overflow-x: hidden !important;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+.active {
+  color: #2455d0 !important;
+}
+.main {
+  color: #09a9b9;
+}
+.bg-custom {
+  background-color: #2455d0;
 }

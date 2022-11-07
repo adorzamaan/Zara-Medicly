@@ -1,0 +1,19 @@
+.bg-image {
+  background-image: url("../../Images/slider1.jpg");
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  /* width: 100% !important; */
+  position: relative;
+  z-index: 1111;
+}
+.bg-image::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: -1;
+}
