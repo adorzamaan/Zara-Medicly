@@ -16,6 +16,7 @@ const {signIn} = useContext(authContext)
     .then(result =>{
         const user = result.user;
         console.log(user);
+        form.reset()
         toast.success('Succefully log in')
     })
     .catch(err =>{
