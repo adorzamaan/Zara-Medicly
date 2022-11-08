@@ -2,7 +2,7 @@ import React from 'react';
 
 const PricingPlan = () => {
     return (
-        <section className="py-6 bg-gray-900 text-gray-50">
+        <section className="py-6 bg-gray-900 text-gray-50 my-32">
         <div className="container mx-auto p-4 sm:p-10">
             <div className="mb-16 space-y-4 text-center">
                 <h1 className="text-4xl font-semibold leading-tight">Pricing</h1>
@@ -14,7 +14,7 @@ const PricingPlan = () => {
             </div>
             <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12">
                 <div className="relative z-0 flex flex-col items-center p-8 border rounded-md bg-gray-800">
-                    <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-custom text-white">Individual</span>
+                    <span className="absolute top-0 px-6 py-1 font-medium rounded-b-lg bg-custom text-white">Individual</span>
                     <p className="flex items-center justify-center my-6 space-x-2 font-bold">
                         <span className="text-lg line-through text-gray-300">&nbsp;32€&nbsp;</span>
                         <span className="pb-2 text-4xl">10€</span>
@@ -47,10 +47,10 @@ const PricingPlan = () => {
 </span>
                         </li>
                     </ul>
-                    <button className="px-4 py-2 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-3 sm:px-8 border border-active">Book Now</button>
+                    <button className="px-4 py-1 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-2 sm:px-8 border border-active">Book Now</button>
                 </div>
                 <div className="relative flex flex-col items-center p-8 border border-white rounded-md  bg-gray-800">
-                    <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-custom text-white">Couple</span>
+                    <span className="absolute top-0 px-6 py-1 font-medium rounded-b-lg bg-custom text-white">Couple</span>
                     <p className="flex items-center justify-center my-6 space-x-2 font-bold">
                         <span className="text-lg line-through text-gray-300">&nbsp;32€&nbsp;</span>
                         <span className="pb-2 text-4xl">19€</span>
@@ -83,10 +83,10 @@ const PricingPlan = () => {
 </span>
                         </li>
                     </ul>
-                    <button className="px-4 py-2 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-3 sm:px-8 border border-active">Book Now</button>
+                    <button className="px-4 py-1 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-2 sm:px-8 border border-active">Book Now</button>
                 </div>
                 <div className="relative z-0 flex flex-col items-center p-8 border rounded-md bg-gray-800">
-                    <span className="absolute top-0 px-6 pt-1 pb-2 font-medium rounded-b-lg bg-custom text-white">Family</span>
+                    <span className="absolute top-0 px-6 py-1 font-medium rounded-b-lg bg-custom text-white">Family</span>
                     <p className="flex items-center justify-center my-6 space-x-2 font-bold">
                         <span className="text-lg line-through text-gray-300">&nbsp;49€&nbsp;</span>
                         <span className="pb-2 text-4xl">37€</span>
@@ -119,7 +119,7 @@ const PricingPlan = () => {
 </span>
                         </li>
                     </ul>
-                    <button className="px-4 py-2 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-3 sm:px-8 border border-active">Book Now</button>
+                    <button className="px-4 py-1 mt-4 font-semibold uppercase rounded-lg md:mt-12 sm:py-2 sm:px-8 border border-active">Book Now</button>
                 </div>
             </div>
         </div>

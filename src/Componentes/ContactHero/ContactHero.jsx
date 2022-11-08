@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ContactHero = () => {
   return (
-    <div className="p-6 py-12 bg-custom text-white">
+    <div className="my-20 p-6 py-12 bg-custom text-white">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row items-center justify-between">
           <h2 className="text-center text-2xl tracking-tighter font-bold">

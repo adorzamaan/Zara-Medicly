@@ -1,58 +1,51 @@
 [
   {
-    "img": "",
-    "service": "Qualified Doctors",
-    "timing": "8am-10am",
-    "serviceFee": "120",
-    "detail": "A clinical degree is a professional or specialized degree granted for concentrates in fields related with medical."
-  },
-  {
-    "img": "",
-    "service": "24/7 Service",
-    "timing": "4pm-6pm",
-    "serviceFee": "220",
-    "detail": "The Specialized and Experienced Doctors in our Tonic Doctor Panel are consistently there and prepared to exhort every day."
-  },
-  {
-    "img": "",
+    "img": "https://i.ibb.co/VgC7D8x/kideny-diasese.jpg",
     "service": "Kidney Disease",
     "timing": "9am-12am",
     "serviceFee": "140",
-    "detail": "Kidney disease affects huge adults people. It occurs when your kidneys become damaged and can't perform their function."
+    "detail": "Kidney disease affects huge adults people. It occurs when your kidneys become damaged and can't perform their function You are at greater risk for kidney disease if you have diabetes or high blood pressure. If you experience kidney failure, treatments include kidney transplant or dialysis."
   },
   {
-    "img": "",
+    "img": "https://i.ibb.co/gt4wDkW/pathology.jpg",
     "service": "Pathology",
     "timing": "6pm-10pm",
     "serviceFee": "920",
-    "detail": "Pathology it is the bridge between science and medicine. Doctors and scientists working in pathology are experts in disease"
+    "detail": "Pathology it is the bridge between science and medicine. Doctors and scientists working in pathology are experts in disease Kidney disease means your kidneys are damaged and can't filter blood the way they should.A pathologist examines a tissue section for evidence of cancerous cells while a surgeon observes. Focus, Disease. Subdivisions, Anatomical pathology, clinica"
   },
   {
     "img": "",
     "service": "Smoke Prohibited",
     "timing": "9am-10pm",
     "serviceFee": "120",
-    "detail": "Smoking is a practice in which a substance is burned and the resulting smoke is breathed in tasted and absorbed into."
+    "detail": "Smoking is a practice in which a substance is burned and the resulting smoke is breathed in tasted and absorbed into.Smoking bans, or smoke-free laws, are public policies, including criminal laws and occupational safety and health regulations,"
   },
   {
-    "img": "",
+    "img": "https://i.ibb.co/7G6Cp8S/orthopology.jpg",
     "service": "Orthopedic",
     "timing": "8am-10pm",
     "serviceFee": "120",
     "detail": "Orthopedics is the part of medication worried about the musculoskeletal framework and bones, joints, tendons."
   },
   {
-    "img": "",
+    "img": "https://i.ibb.co/JWL2RSM/blood-test.jpg",
     "service": "Blood Test",
     "timing": "8am-10pm",
     "serviceFee": "120",
-    "detail": "Blood tests help doctors check for certain diseases, conditions and your organs and show how well treatments are working."
+    "detail": "Blood tests help doctors check for certain diseases, conditions and your organs and show how well treatments are working.Blood tests are used to measure or examine cells, chemicals, proteins, or other substances in the blood. Blood testing, also known as blood work, is one of the most common types of lab tests. Blood work is often included as part of a regular checkup."
   },
   {
-    "img": "",
+    "img": "https://i.ibb.co/RTjJNnf/primary-checkup.jpg",
     "service": "Primary Checkup",
     "timing": "8am-10pm",
     "serviceFee": "120",
-    "detail": "They are featuring the significance of counteraction, as a the quantity of patients requiring clinical treatment."
+    "detail": "They are featuring the significance of counteraction, as a the quantity of patients requiring clinical treatment.Most people younger than 40 years of age are generally free from diseases that could be diagnosed by physical examination alone. In this age group, health problems usually show specific signs or symptoms that would prompt you to seek medical attention. Also, a lot of the testing that was done routinely in the past has not been found to be cost effective and, in some cases, causes unnecessary additional testing and anxiety."
+  },
+  {
+    "img": "https://i.ibb.co/NrMBRLs/service4.jpg",
+    "service": "24/7 Service",
+    "timing": "4pm-6pm",
+    "serviceFee": "220",
+    "detail": "The Specialized and Experienced Doctors in our Tonic Doctor Panel are consistently there and prepared to exhort every day.Emergency Services We Offer · Fever, Sore Throats, Itchy Eyes · Breaks, Fractures, and Sprains · Chest and Abdominal Pain · Lacerations, Wounds, or Bleeding."
   }
 ]

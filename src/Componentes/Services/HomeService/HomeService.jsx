@@ -1,14 +1,15 @@
-import { useEffect, useState } from "react";
-import ServiceCard from "./ServiceCard/ServiceCard";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import ServiceCard from '../ServiceCard/ServiceCard';
 
-const Services = () => {
-  const [services, setServices] = useState([]);
+const HomeService = () => {
+    const [homeServices, setHomeServices] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allservices`)
+    fetch(`http://localhost:5000/services`)
       .then((res) => res.json())
       .then((data) => {
-        setServices(data);
+        setHomeServices(data);
       });
   }, []);
 
@@ -20,12 +21,15 @@ const Services = () => {
       </div>
 
       <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-12">
-        {services.map((service) => (
+        {homeServices.map((service) => (
           <ServiceCard service={service} key={service._id}></ServiceCard>
         ))}
+      </div>
+      <div className='text-center my-20'>
+        <Link to="/services" className='py-2 border border-blue-600 text-black px-8 font-bold'>View All Services</Link>
       </div>
     </div>
   );
 };
 
-export default Services;
+export default HomeService;
