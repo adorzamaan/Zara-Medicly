@@ -20,5 +20,5 @@ code {
   color: #09a9b9;
 }
 .bg-custom {
-  background-color: #2455d0;
+  background-color: #2455d0 !important;
 }

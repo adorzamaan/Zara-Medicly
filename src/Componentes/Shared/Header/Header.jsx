@@ -1,9 +1,19 @@
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import toast from 'react-hot-toast';
 import { Link, NavLink } from "react-router-dom";
+import { authContext } from '../../../AuthProvider/AuthProvider';
 import './Header.css';
 const Header = () => {
+const {user,logOut} = useContext(authContext)
   const [open, setOpen] = useState(false);
+
+const handleLogOut = ()=>{
+  logOut()
+  .then()
+  .catch(err => toast.error(err.message))
+}
+
 
   return (
     <header className="sticky top-0 p-4 bg-white text-gray-800 justify-center">
@@ -67,16 +77,16 @@ const Header = () => {
               </svg>
             </button>
           </li> */}
-          <li className="flex">
-            <Link
-              rel="noopener noreferrer"
-              className="flex items-center px-4 -mb-1"
-            >
-              Log Out
-            </Link>
-          </li>
-
-          <li className="flex">
+         {
+          user && user.uid ? <> <li className="flex">
+          <Link onClick={handleLogOut}
+            rel="noopener noreferrer"
+            className="flex items-center px-4 -mb-1"
+          >
+            Log Out
+          </Link>
+        </li>
+</>:<><li className="flex">
             <Link to="/profile" className="flex items-center px-2 -mb-1"></Link>
           </li>
           <li className="flex">
@@ -96,7 +106,9 @@ const Header = () => {
             >
               Sign up
             </NavLink>
-          </li>
+          </li></>
+         }
+          
         </ul>
         <div className="md:hidden flex">
           {/* <li className="flex">
