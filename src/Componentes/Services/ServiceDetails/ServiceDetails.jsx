@@ -7,6 +7,16 @@ const ServiceDetails = () => {
   const serviceDetail = useLoaderData();
   console.log(serviceDetail);
 
+const handleRiview = e =>{
+  e.preventDefault()
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name,email,password);
+}
+
+
   return (
     <div className="container mx-auto">
       <div className="card w-10/12 service_details flex justify-between mx-auto bg-base-100 shadow-sm border border-gray-400 mt-8 rounded-xl">
@@ -71,6 +81,70 @@ const ServiceDetails = () => {
           </div>
         </div>
       </div>
+
+
+    <div className="flex justify-center">
+    <form onSubmit={handleRiview}
+        action=""
+        className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
+      >
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Service Name:
+          </label>
+          <input
+            type="text"
+            name="servicename"
+            id="name"
+            placeholder="name"
+            readOnly
+          defaultValue={serviceDetail.service}
+            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+          />
+        </div>
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Client Name:
+          </label>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="name"
+            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+          />
+        </div>
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Photo Url
+          </label>
+          <input
+            type="text"
+            name="photoURL"
+            id="photoURL"
+            placeholder="photoUrl"
+            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+          />
+        </div>
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Email
+          </label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            required
+            placeholder="Email"
+            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+          />
+        </div>
+       
+        <button className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white">
+          Submit
+        </button>
+      </form>
+    </div>
       <div className="text-center py-6">
         <h3>
           If your want you can share your experience ? Plese give awesome riview
