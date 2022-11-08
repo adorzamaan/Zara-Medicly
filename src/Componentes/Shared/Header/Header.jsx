@@ -1,4 +1,4 @@
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/solid';
+import { Bars3Icon, UserCircleIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from "react";
 import toast from 'react-hot-toast';
 import { Link, NavLink } from "react-router-dom";
@@ -45,11 +45,7 @@ const handleLogOut = ()=>{
               Services
             </NavLink>
           </li>
-          <li className="flex">
-            <NavLink to="/faq" className="flex items-center px-4 -mb-1 ">
-              About
-            </NavLink>
-          </li>
+        
 
           <li className="flex">
             <NavLink to="/blog" className="flex items-center px-4 -mb-1">
@@ -78,7 +74,17 @@ const handleLogOut = ()=>{
             </button>
           </li> */}
          {
-          user && user.uid ? <> <li className="flex">
+          user && user.uid ? <>
+           <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/"
+              className="flex items-center px-4 -mb-1"
+            >
+              My Services
+            </NavLink>
+          </li>
+           <li className="flex">
           <Link onClick={handleLogOut}
             rel="noopener noreferrer"
             className="flex items-center px-4 -mb-1"
@@ -86,9 +92,10 @@ const handleLogOut = ()=>{
             Log Out
           </Link>
         </li>
-</>:<><li className="flex">
-            <Link to="/profile" className="flex items-center px-2 -mb-1"></Link>
+        <li className="flex">
+            <Link to="/profile" className="flex items-center px-2 -mb-1"><UserCircleIcon className='bg-custom text-white w-5 h-5 rounded-full'></UserCircleIcon></Link>
           </li>
+</>:<>
           <li className="flex">
             <NavLink
               rel="noopener noreferrer"
@@ -176,30 +183,37 @@ const handleLogOut = ()=>{
             Blog
           </NavLink>
 
-          <Link
+          {
+          user && user.uid ? <> <li className="flex">
+          <Link onClick={handleLogOut}
             rel="noopener noreferrer"
             className="flex items-center px-4 -mb-1"
           >
             Log Out
           </Link>
-
-          <Link to="/profile" className="flex items-center px-2 -mb-1">
-            <img alt="" className="w-11 rounded-full" />
-          </Link>
-          <NavLink
-            rel="noopener noreferrer"
-            to="/login"
-            className="flex items-center px-4 -mb-1"
-          >
-            Login{" "}
-          </NavLink>
-          <NavLink
-            rel="noopener noreferrer"
-            to="/signup"
-            className="flex items-center px-4 -mb-1"
-          >
-            Sign up
-          </NavLink>
+        </li>
+</>:<><li className="flex">
+            <Link to="/profile" className="flex items-center px-2 -mb-1"></Link>
+          </li>
+          <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/login"
+              className="flex items-center px-4 -mb-1"
+            >
+              Login{" "}
+            </NavLink>
+          </li>
+          <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/signup"
+              className="flex items-center px-4 -mb-1"
+            >
+              Sign up
+            </NavLink>
+          </li></>
+         }
         </ul>
       </div>
     </header>

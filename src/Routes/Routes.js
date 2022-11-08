@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Componentes/Home/Home";
+import ServiceDetails from "../Componentes/Services/ServiceDetails/ServiceDetails";
 import Services from "../Componentes/Services/Services";
 import Login from "../Componentes/Shared/Login/Login";
 import SignUp from "../Componentes/Shared/SignUp/SignUp";
@@ -32,7 +33,13 @@ const Routes = () => {
           path: "/signup",
           element: <SignUp></SignUp>,
         },
-        {},
+        {
+          path: "/allservices/:id",
+          loader: ({ params }) => {
+            return fetch(`http://localhost:5000/allservices/${params.id}`);
+          },
+          element: <ServiceDetails></ServiceDetails>,
+        },
         {},
         {},
       ],
