@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { Link, useLoaderData } from "react-router-dom";
 import { authContext } from "../../../AuthProvider/AuthProvider";
 import "./serviceDetails.css";
@@ -10,10 +11,37 @@ const ServiceDetails = () => {
 const handleRiview = e =>{
   e.preventDefault()
     const form = e.target;
-    const name = form.name.value;
+    const name = form.clientName.value;
+    const servicename = form.servicename.value;
     const email = form.email.value;
-    const password = form.password.value;
-    console.log(name,email,password);
+    const photourl = form.photoURL.value;
+    const feedback = form.feedback.value;
+    console.log(name,email,photourl);
+    const riviews = {
+      name,
+      servicename,
+      email,
+      photourl,
+      feedback
+    }
+
+    fetch('http://localhost:5000/riviews',{
+      method:'POST',
+      headers:{
+        "content-type":"application/json"
+      },
+      body:JSON.stringify(riviews)
+    })
+    .then(res => res.json())
+    .then(data =>{
+      console.log(data)
+      toast.success("Thanks for the feedback")
+    })
+    .catch(err =>{
+      toast.error(err.message)
+    })
+
+
 }
 
 
@@ -103,13 +131,13 @@ const handleRiview = e =>{
           />
         </div>
         <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
+          <label htmlFor="name" className="block text-black">
             Client Name:
           </label>
           <input
             type="text"
-            name="name"
-            id="name"
+            name="clientName"
+            id="clientName"
             placeholder="name"
             className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
           />
@@ -139,8 +167,14 @@ const handleRiview = e =>{
             className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
           />
         </div>
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Feedback
+          </label>
+          <textarea name="feedback" rows={6} cols={78} placeholder="feedback" className="border p-4"></textarea>
+        </div>
        
-        <button className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white">
+        <button type="submit" className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white">
           Submit
         </button>
       </form>
