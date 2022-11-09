@@ -6,23 +6,25 @@ import Riviews from "../../Riviews/Riviews";
 import "./serviceDetails.css";
 const ServiceDetails = () => {
   const { user } = useContext(authContext);
+  console.log(user);
   const [riviews,setRiviews] = useState([])
   const serviceDetail = useLoaderData();
   console.log(serviceDetail);
+  const {_id,service} = serviceDetail
 
 const handleRiview = e =>{
   e.preventDefault()
     const form = e.target;
     const name = form.clientName.value;
-    const servicename = form.servicename.value;
-    const email = form.email.value;
+    // const email = form.email.value;
     const photourl = form.photoURL.value;
     const feedback = form.feedback.value;
-    console.log(name,email,photourl);
+    console.log(name,photourl);
     const riviews = {
       name,
-      servicename,
-      email,
+      servicename:service,
+      sericeID:_id,
+      email:user.email,
       photourl,
       feedback
     }
@@ -84,11 +86,14 @@ useEffect(()=>{
         </div>
       </div>
 
-    <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+   <>
+<h3 className="text-center font-bold mt-10 mb-5">Our previous Customer Feedback </h3>
+   <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
     {
       riviews.map(riview =><Riviews riview={riview} key={riview._id}></Riviews>)
      }
     </div>
+   </>
 
 
   {
@@ -101,7 +106,7 @@ useEffect(()=>{
       <h3 className="font-bold">Your opinion matters !</h3>
 
         </div>
-        <div className="space-y-1 text-sm font-medium">
+        {/* <div className="space-y-1 text-sm font-medium">
           <label htmlFor="username" className="block text-black">
             Service Name:
           </label>
@@ -115,6 +120,21 @@ useEffect(()=>{
             className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
           />
         </div>
+        <div className="space-y-1 text-sm font-medium">
+          <label htmlFor="username" className="block text-black">
+            Email
+          </label>
+          <input
+            type="text"
+            name="email"
+            defaultValue={user.email}
+            id="email"
+            readOnly
+            required
+            placeholder="Email"
+            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+          />
+        </div> */}
         <div className="space-y-1 text-sm font-medium">
           <label htmlFor="name" className="block text-black">
             Your Name:
@@ -139,24 +159,12 @@ useEffect(()=>{
             className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
           />
         </div>
-        <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
-            Email
-          </label>
-          <input
-            type="text"
-            name="email"
-            id="email"
-            required
-            placeholder="Email"
-            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
-          />
-        </div>
+        
         <div className="space-y-1 text-sm font-medium">
           <label htmlFor="username" className="block text-black">
             Feedback
           </label>
-          <textarea name="feedback" rows={6} cols={78} placeholder="feedback" className="border p-4"></textarea>
+          <textarea name="feedback" rows={4} placeholder="feedback" className="border p-4 w-full"></textarea>
         </div>
        
         <button type="submit" className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white">

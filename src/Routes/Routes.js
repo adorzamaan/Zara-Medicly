@@ -1,11 +1,15 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Componentes/Home/Home";
+import AddService from "../Componentes/Services/AddService/AddService";
+import MyServices from "../Componentes/Services/MyServices/MyServices";
 import ServiceDetails from "../Componentes/Services/ServiceDetails/ServiceDetails";
 import Services from "../Componentes/Services/Services";
 import Login from "../Componentes/Shared/Login/Login";
+import Profile from "../Componentes/Shared/Profile/Profile";
 import SignUp from "../Componentes/Shared/SignUp/SignUp";
 import Main from "../Main/Main";
+import PrivateRoutes from "./PrivateRoutes";
 
 const Routes = () => {
   const router = createBrowserRouter([
@@ -26,6 +30,10 @@ const Routes = () => {
           element: <Services></Services>,
         },
         {
+          path: "/myservices",
+          element: <MyServices></MyServices>,
+        },
+        {
           path: "/login",
           element: <Login></Login>,
         },
@@ -40,8 +48,19 @@ const Routes = () => {
           },
           element: <ServiceDetails></ServiceDetails>,
         },
-        {},
-        {},
+        {
+          path: "/addservice",
+          element: (
+            <PrivateRoutes>
+              {" "}
+              <AddService></AddService>
+            </PrivateRoutes>
+          ),
+        },
+        {
+          path: "/profile",
+          element: <Profile></Profile>,
+        },
       ],
     },
   ]);

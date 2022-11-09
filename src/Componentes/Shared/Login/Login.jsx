@@ -1,36 +1,41 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [showPass, setshowPass] = useState(false);
-const {signIn} = useContext(authContext)
-  const handleSignIn = e =>{
-    e.preventDefault()
+  const { signIn } = useContext(authContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
+  const handleSignIn = (e) => {
+    e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     // console.log(name,password,email);
-    signIn(email,password)
-    .then(result =>{
+    signIn(email, password)
+      .then((result) => {
         const user = result.user;
         console.log(user);
-        form.reset()
-        toast.success('Succefully log in')
-    })
-    .catch(err =>{
-        toast.error(err.message)
-        console.log(err.message)
-    })
-}
-
-
+        toast.success("Succefully log in");
+        navigate(from, { replace: true });
+        form.reset();
+      })
+      .catch((err) => {
+        toast.error(err.message);
+        console.log(err.message);
+      })
+  };
 
   return (
     <div className="w-full mt-10 max-w-md mx-auto p-8 space-y-2 rounded-xl bg-gray-200 text-black shadow-xl">
       <h1 className="text-2xl font-bold text-center">Login</h1>
-      <form onSubmit={handleSignIn} className="space-y-6 ng-untouched ng-pristine ng-valid">
+      <form
+        onSubmit={handleSignIn}
+        className="space-y-6 ng-untouched ng-pristine ng-valid"
+      >
         <div className="space-y-1 text-sm font-medium">
           <label htmlFor="username" className="block text-black">
             Email

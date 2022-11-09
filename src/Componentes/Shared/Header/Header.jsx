@@ -16,7 +16,7 @@ const handleLogOut = ()=>{
 
 
   return (
-    <header className="sticky top-0 p-4 bg-white text-gray-800 justify-center">
+    <header className="header sticky top-0 p-4 bg-white text-gray-800 justify-center">
       <div className='container mx-auto'>
       <div className="flex justify-between h-16">
         <Link
@@ -78,7 +78,16 @@ const handleLogOut = ()=>{
            <li className="flex">
             <NavLink
               rel="noopener noreferrer"
-              to="/"
+              to="/addservice"
+              className="flex items-center px-4 -mb-1"
+            >
+              Add Service
+            </NavLink>
+          </li>
+           <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/myservices"
               className="flex items-center px-4 -mb-1"
             >
               My Services
