@@ -87,10 +87,10 @@ const handleLogOut = ()=>{
            <li className="flex">
             <NavLink
               rel="noopener noreferrer"
-              to="/myservices"
+              to="/myriviews"
               className="flex items-center px-4 -mb-1"
             >
-              My Services
+              My riviews
             </NavLink>
           </li>
            <li className="flex">

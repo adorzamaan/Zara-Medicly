@@ -1,6 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Componentes/Home/Home";
+import MyRiviews from "../Componentes/Riviews/MyRiviews/MyRiviews";
 import AddService from "../Componentes/Services/AddService/AddService";
 import MyServices from "../Componentes/Services/MyServices/MyServices";
 import ServiceDetails from "../Componentes/Services/ServiceDetails/ServiceDetails";
@@ -61,6 +62,17 @@ const Routes = () => {
           path: "/profile",
           element: <Profile></Profile>,
         },
+        {
+          path: "/myriviews",
+          element: <MyRiviews></MyRiviews>,
+        },
+        // {
+        //   path: "/riviews/:id",
+        //   loader: ({ params }) => {
+        //     return fetch(`http://localhost:5000/riviews/${params.id}`);
+        //   },
+        //   element: <ServiceDetails></ServiceDetails>,
+        // },
       ],
     },
   ]);

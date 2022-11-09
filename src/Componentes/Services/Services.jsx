@@ -10,7 +10,7 @@ const Services = () => {
       .then((data) => {
         setServices(data);
       });
-  }, []);
+  }, [services]);
 
   return (
     <div className="container mx-auto my-14">

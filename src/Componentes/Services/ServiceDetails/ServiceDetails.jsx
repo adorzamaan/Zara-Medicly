@@ -7,57 +7,77 @@ import "./serviceDetails.css";
 const ServiceDetails = () => {
   const { user } = useContext(authContext);
   console.log(user);
-  const [riviews,setRiviews] = useState([])
+  const [riviews, setRiviews] = useState([]);
+  const [singleriviews, setSingleRiviews] = useState([]);
   const serviceDetail = useLoaderData();
   console.log(serviceDetail);
-  const {_id,service} = serviceDetail
+  const { _id, service } = serviceDetail;
 
-const handleRiview = e =>{
-  e.preventDefault()
+  const handleRiview = (e) => {
+    e.preventDefault();
     const form = e.target;
     const name = form.clientName.value;
     // const email = form.email.value;
     const photourl = form.photoURL.value;
     const feedback = form.feedback.value;
-    console.log(name,photourl);
+    console.log(name, photourl);
     const riviews = {
       name,
-      servicename:service,
-      sericeID:_id,
-      email:user.email,
+      servicename: service,
+      sericeID: _id,
+      email: user.email,
       photourl,
-      feedback
-    }
-    fetch('http://localhost:5000/riviews',{
-      method:'POST',
-      headers:{
-        "content-type":"application/json"
+      feedback,
+    };
+    fetch("http://localhost:5000/riviews", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
       },
-      body:JSON.stringify(riviews)
+      body: JSON.stringify(riviews),
     })
-    .then(res => res.json())
-    .then(data =>{
-      console.log(data)
-      toast.success("Thanks for the feedback")
-      form.reset()
-    })
-    .catch(err =>{
-      toast.error(err.message)
-    })
-}
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        toast.success("Thanks for the feedback");
+        form.reset();
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  };
+  // const parmas = useParams()
+  useEffect(() => {
+    fetch(`http://localhost:5000/riviews`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRiviews(data);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  }, []);
+  useEffect(() => {
+    fetch(`http://localhost:5000/riviews`)
+      .then((res) => res.json())
+      .then((data) => {
+        setRiviews(data);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  }, [riviews]);
 
-useEffect(()=>{
-  fetch('http://localhost:5000/riviews')
-  .then(res => res.json())
-  .then(data => {
-    setRiviews(data)
-  })
-  .catch(err =>{
-    toast.error(err.message)
-  })
-},[])
-
-
+  useEffect(() => {
+    fetch(`http://localhost:5000/riviews/${_id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setSingleRiviews(data);
+      })
+      .catch((err) => {
+        toast.error(err.message);
+      });
+  }, [_id, singleriviews]);
 
   return (
     <div className="container mx-auto">
@@ -86,27 +106,38 @@ useEffect(()=>{
         </div>
       </div>
 
-   <>
-<h3 className="text-center font-bold mt-10 mb-5">Our previous Customer Feedback </h3>
-   <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-    {
-      riviews.map(riview =><Riviews riview={riview} key={riview._id}></Riviews>)
-     }
-    </div>
-   </>
+      <>
+        <h3 className="text-center font-bold mt-10 mb-5">
+          Our previous Customer Feedback{" "}
+        </h3>
+        {!user && (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+            {riviews.map((riview) => (
+              <Riviews riview={riview} key={riview._id}></Riviews>
+            ))}
+          </div>
+        )}
+      </>
 
-
-  {
-    user && user.uid &&  <div className="flex justify-center my-10">
-    <form onSubmit={handleRiview}
-        action=""
-        className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
-      >
-        <div>
-      <h3 className="font-bold">Your opinion matters !</h3>
-
+      {user && user.uid && (
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+          {singleriviews.map((riview) => (
+            <Riviews riview={riview} key={riview._id}></Riviews>
+          ))}
         </div>
-        {/* <div className="space-y-1 text-sm font-medium">
+      )}
+    
+      {user && user.uid && (
+        <div className="flex justify-center my-10">
+          <form
+            onSubmit={handleRiview}
+            action=""
+            className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
+          >
+            <div>
+              <h3 className="font-bold">Your opinion matters !</h3>
+            </div>
+            {/* <div className="space-y-1 text-sm font-medium">
           <label htmlFor="username" className="block text-black">
             Service Name:
           </label>
@@ -135,57 +166,65 @@ useEffect(()=>{
             className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
           />
         </div> */}
-        <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="name" className="block text-black">
-            Your Name:
-          </label>
-          <input
-            type="text"
-            name="clientName"
-            id="clientName"
-            placeholder="name"
-            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
-          />
+            <div className="space-y-1 text-sm font-medium">
+              <label htmlFor="name" className="block text-black">
+                Your Name:
+              </label>
+              <input
+                type="text"
+                name="clientName"
+                id="clientName"
+                placeholder="name"
+                className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+              />
+            </div>
+            <div className="space-y-1 text-sm font-medium">
+              <label htmlFor="username" className="block text-black">
+                Photo Url
+              </label>
+              <input
+                type="text"
+                name="photoURL"
+                id="photoURL"
+                placeholder="photoUrl"
+                className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
+              />
+            </div>
+
+            <div className="space-y-1 text-sm font-medium">
+              <label htmlFor="username" className="block text-black">
+                Feedback
+              </label>
+              <textarea
+                name="feedback"
+                rows={4}
+                placeholder="feedback"
+                className="border p-4 w-full"
+              ></textarea>
+            </div>
+
+            <button
+              type="submit"
+              className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white"
+            >
+              Submit
+            </button>
+          </form>
         </div>
-        <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
-            Photo Url
-          </label>
-          <input
-            type="text"
-            name="photoURL"
-            id="photoURL"
-            placeholder="photoUrl"
-            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
-          />
+      )}
+      {!user && (
+        <div className="text-center py-6">
+          <h3 className="font-medium mr-3">
+            If your want you can share your experience ? Please
+            <Link
+              className="px-8 py-1 my-3 bg-black hover:bg-green-500 text-white"
+              to="/login"
+            >
+              Login
+            </Link>
+          </h3>
         </div>
-        
-        <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
-            Feedback
-          </label>
-          <textarea name="feedback" rows={4} placeholder="feedback" className="border p-4 w-full"></textarea>
-        </div>
-       
-        <button type="submit" className="block w-full p-3 text-center rounded-sm text-white bg-gray-400 hover:bg-blue-600 hover:text-white">
-          Submit
-        </button>
-      </form>
-    </div>
-  }
-   {
-    !user &&    <div className="text-center py-6">
-    <h3 className="font-medium mr-3">
-      If your want you can share your experience ? Please    
-      <Link
-        className="px-8 py-1 my-3 bg-black hover:bg-green-500 text-white"
-        to="/login"
-      >
-        Login
-      </Link>
-    </h3>
-  </div>
-   }
+      )}
     </div>
   );
 };
