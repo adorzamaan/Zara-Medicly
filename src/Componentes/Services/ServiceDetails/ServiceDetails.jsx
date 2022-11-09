@@ -107,9 +107,15 @@ const ServiceDetails = () => {
       </div>
 
       <>
-        <h3 className="text-center font-bold mt-10 mb-5">
-          Our previous Customer Feedback{" "}
-        </h3>
+        {singleriviews.length === 0 ? (
+         <h3 className="text-center font-bold mt-10 mb-5 text-red-600">
+         Cuurently riview not available !!!!
+       </h3>
+        ) : (
+          <h3 className="text-center font-bold mt-10 mb-5">
+            Our previous Customer Feedback{" "}
+          </h3>
+        )}
         {!user && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
             {riviews.map((riview) => (
@@ -126,7 +132,7 @@ const ServiceDetails = () => {
           ))}
         </div>
       )}
-    
+
       {user && user.uid && (
         <div className="flex justify-center my-10">
           <form
@@ -135,7 +141,7 @@ const ServiceDetails = () => {
             className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
           >
             <div>
-              <h3 className="font-bold">Your opinion matters !</h3>
+              <h3 className="font-bold">How was your experience? Please let me know !!!</h3>
             </div>
             {/* <div className="space-y-1 text-sm font-medium">
           <label htmlFor="username" className="block text-black">

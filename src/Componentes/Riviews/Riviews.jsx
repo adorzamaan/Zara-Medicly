@@ -3,15 +3,16 @@ import React from 'react';
 const Riviews = ({riview}) => {
     return (
         <div className="text-center my-1">
-        <div className="flex flex-col w-full max-w-lg p-3 mx-auto divide-y rounded-md divide-gray-700 bg-gray-900 text-gray-100">
+        <div className="flex flex-col w-full max-w-lg p-3 mx-auto divide-y rounded-md divide-gray-700 bg-gray-800 text-gray-100">
 
           <div className="flex justify-between p-3">
             <div className="flex space-x-4">
               <div>
                 <img
                   src={riview?.photourl}
+                  
                   alt=""
-                  className="object-cover w-12 h-12 rounded-full bg-gray-500"
+                  className="object-cover w-10 h-10 rounded-full bg-gray-500"
                 />
               </div>
               <div>

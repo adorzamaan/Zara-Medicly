@@ -2,6 +2,7 @@ import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "../Componentes/Home/Home";
 import MyRiviews from "../Componentes/Riviews/MyRiviews/MyRiviews";
+import UpdateRiview from "../Componentes/Riviews/UpdateRiview/UpdateRiview";
 import AddService from "../Componentes/Services/AddService/AddService";
 import MyServices from "../Componentes/Services/MyServices/MyServices";
 import ServiceDetails from "../Componentes/Services/ServiceDetails/ServiceDetails";
@@ -65,6 +66,10 @@ const Routes = () => {
         {
           path: "/myriviews",
           element: <MyRiviews></MyRiviews>,
+        },
+        {
+          path: "/updatedriview",
+          element: <UpdateRiview></UpdateRiview>,
         },
         // {
         //   path: "/riviews/:id",

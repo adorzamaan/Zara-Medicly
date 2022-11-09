@@ -5,7 +5,7 @@ const Table = ({service}) => {
     return (
         <tr className="border-b border-opacity-20 border-gray-70 text-black">
         <td className="p-3 flex justify-evenly items-center">
-          <XCircleIcon className="w-7 h-7 rounded-full text-orange-400 hover:text-red-700"></XCircleIcon>
+          <XCircleIcon className="w-7 h-7 rounded-full text-blue-600 hover:text-red-700"></XCircleIcon>
           <img src="" className="w-20 rounded-lg" alt="" />
         </td>
         <td className="p-3">
