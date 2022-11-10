@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { authContext } from "../../../AuthProvider/AuthProvider";
+import useTitle from "../../CustomHook/useTitle";
 
 const Login = () => {
   const [showPass, setshowPass] = useState(false);
@@ -9,7 +10,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
-
+useTitle("Login")
   const handleSignIn = (e) => {
     e.preventDefault();
     const form = e.target;

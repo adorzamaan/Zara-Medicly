@@ -12,13 +12,12 @@ const ContactHero = () => {
           <div className="space-x-2 text-center py-2 lg:py-0">
             <span>Read <Link>Conditions</Link></span>
           </div>
-          <a
-            href="/"
-            rel="noreferrer noopener"
+          <Link
+            to="/"
             className="px-5 mt-4 lg:mt-0 py-1 rounded-md border block bg-gray-50 text-gray-900 border-gray-400"
           >
             Book Now
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -64,7 +64,11 @@ const Routes = () => {
         },
         {
           path: "/profile",
-          element: <Profile></Profile>,
+          element: (
+            <PrivateRoutes>
+              <Profile></Profile>
+            </PrivateRoutes>
+          ),
         },
         {
           path: "/myriviews",

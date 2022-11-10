@@ -4,7 +4,7 @@ import { useLoaderData } from "react-router-dom";
 
 const UpdateRiview = () => {
   const updateRiview = useLoaderData();
-  const { _id } = updateRiview;
+  const { id } = updateRiview;
   const [riviews, setRiviews] = useState([]);
 
   const handleUpdateRiview = (e) => {
@@ -19,7 +19,7 @@ const UpdateRiview = () => {
       feedback,
     };
 
-    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${_id}`, {
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -28,7 +28,7 @@ const UpdateRiview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        
+        setRiviews(data)
       })
       .catch((err) => {
         toast.error(err.message);
@@ -36,12 +36,12 @@ const UpdateRiview = () => {
   };
 
   useEffect(() => {
-    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${_id}}`)
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${id}}`)
       .then((res) => res.json())
       .then((data) => {
         setRiviews(data);
       });
-  }, [_id]);
+  }, [id]);
 
   return (
     <div>
