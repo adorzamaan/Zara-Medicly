@@ -5,7 +5,7 @@ import { authContext } from "../../../AuthProvider/AuthProvider";
 
 const Login = () => {
   const [showPass, setshowPass] = useState(false);
-  const { signIn } = useContext(authContext);
+  const { signIn,googleSignIn } = useContext(authContext);
   const location = useLocation();
   const navigate = useNavigate();
   const from = location.state?.from?.pathname || "/";
@@ -47,6 +47,35 @@ const Login = () => {
         console.log(err.message);
       });
   };
+
+
+const handlegoogleSignIn = ()=>{
+  googleSignIn()
+  .then(result =>{
+    const user = result.user
+    const currentUser = {
+      email: user.email,
+    };
+    fetch("http://localhost:5000/jwt", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(currentUser),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        localStorage.setItem("doctor-portal", data.token);
+        toast.success("Succefully log in");
+        navigate(from, { replace: true });
+      });
+  })
+  .catch(err =>{
+    toast.error(err.message)
+  })
+}
+
 
   return (
     <div className="w-full mt-10 max-w-md mx-auto p-8 space-y-2 rounded-xl bg-gray-200 text-black shadow-xl">
@@ -114,7 +143,7 @@ const Login = () => {
         <div className="flex-1 h-px sm:w-16 bg-gray-700"></div>
       </div>
       <div className="flex justify-center space-x-4">
-        <button aria-label="Log in with Google" className="p-3 rounded-sm">
+        <button onClick={handlegoogleSignIn} aria-label="Log in with Google" className="p-3 rounded-sm">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 32 32"
