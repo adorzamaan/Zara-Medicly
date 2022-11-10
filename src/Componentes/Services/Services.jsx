@@ -1,16 +1,21 @@
 import { useEffect, useState } from "react";
+import LoadingSpinner from "../Shared/LoadinSpinner/LoadingSpinner";
 import ServiceCard from "./ServiceCard/ServiceCard";
 
 const Services = () => {
   const [services, setServices] = useState([]);
+  // const { setLoading } = useContext(authContext);
 
   useEffect(() => {
     fetch(`http://localhost:5000/allservices`)
       .then((res) => res.json())
       .then((data) => {
-        setServices(data);
+        if (data.length === 0 && <LoadingSpinner></LoadingSpinner>) ;
+        else{
+          setServices(data);
+        }
       });
-  }, [services]);
+  }, [services,]);
 
   return (
     <div className="container mx-auto my-14">

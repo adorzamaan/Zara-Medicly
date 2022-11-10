@@ -5,6 +5,10 @@ const ServiceCard = ({ service }) => {
   return (
     <div className="card bg-base-100 shadow-md border border-gray-300">
       <img src={service?.img} alt="/" className="rounded-t-3xl w-full h-60" />
+
+      {/* <PhotoView src={service?.img} key={service._id}>
+      <img src={service?.img} alt="/" className="rounded-t-3xl w-full h-60" />
+      </PhotoView> */}
       <div className="card-body p-4 ">
         <h2 className="font-bold" style={{ fontSize: "14px" }}>
           {service?.service}
