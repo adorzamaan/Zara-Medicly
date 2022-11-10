@@ -81,7 +81,7 @@ const Footer = () => {
             </svg>
           </a>
         </div>
-        <div className="text-center text-purple-600 pt-10 sm:pt-12 font-light flex items-center justify-center">
+        <div className="text-center text-blue-600 pt-10 sm:pt-12 font-light flex items-center justify-center">
           All Rights Reserved By &copy; Dr.Zara Medicly | 2022
         </div>
       </div>

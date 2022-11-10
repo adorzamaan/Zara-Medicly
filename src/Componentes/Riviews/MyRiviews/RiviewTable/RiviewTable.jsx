@@ -31,7 +31,7 @@ useEffect(()=>{
       </td>
       <td className="p-3 text-center">
         <span className={`px-3 py-1 font-semibold rounded-md`}>
-          <Link to="/updatedriview">Update</Link>
+          <Link to={`/updatedriview/${_id}`}>Update</Link>
         </span>
       </td>
     </tr>

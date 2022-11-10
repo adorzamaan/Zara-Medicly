@@ -73,7 +73,10 @@ const Routes = () => {
           ),
         },
         {
-          path: "/updatedriview",
+          path: "/updatedriview/:id",
+          loader: ({ params }) => {
+            return fetch(`http://localhost:5000/riviews/${params.id}`);
+          },
           element: (
             <PrivateRoutes>
               <UpdateRiview></UpdateRiview>

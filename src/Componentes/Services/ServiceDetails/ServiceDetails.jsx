@@ -136,7 +136,6 @@ const ServiceDetails = () => {
         <div className="flex justify-center my-10">
           <form
             onSubmit={handleRiview}
-            action=""
             className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
           >
             <div>

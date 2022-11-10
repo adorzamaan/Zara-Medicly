@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useNavigate, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateRiview = () => {
   const navigate = useNavigate();
-  const params = useParams();
+  const updateRiview = useLoaderData();
+  console.log(updateRiview);
+  const { _id } = updateRiview;
   const [riviews, setRiviews] = useState([]);
 
   const handleUpdateRiview = (e) => {
@@ -20,7 +22,7 @@ const UpdateRiview = () => {
       feedback,
     };
 
-    fetch(`http://localhost:5000/riviews/${params.id}`, {
+    fetch(`http://localhost:5000/riviews/${_id}`, {
       method: "PATCH",
       headers: {
         "content-type": "application/json",
@@ -30,10 +32,7 @@ const UpdateRiview = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount) {
-          toast.success(`Succefully updated`);
-          navigate("/services");
-        }
+        
       })
       .catch((err) => {
         toast.error(err.message);
@@ -41,12 +40,12 @@ const UpdateRiview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews/${params.id}`)
+    fetch(`http://localhost:5000/riviews/${_id}}`)
       .then((res) => res.json())
       .then((data) => {
         setRiviews(data);
       });
-  }, [params.id]);
+  }, [_id]);
 
   return (
     <div>

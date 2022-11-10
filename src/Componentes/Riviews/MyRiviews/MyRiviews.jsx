@@ -5,20 +5,28 @@ import useTitle from "../../CustomHook/useTitle";
 import RiviewTable from "./RiviewTable/RiviewTable";
 
 const MyRiviews = () => {
-  const { user } = useContext(authContext);
+  const { user,logOut } = useContext(authContext);
   const [myRiviews, setMyriviews] = useState([]);
   useTitle('My Riviews')
 
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews?email=${user?.email}`)
+    fetch(`http://localhost:5000/riviews?email=${user?.email}`,{
+      headers: {
+        authorization: `Bearer ${localStorage.getItem("doctor-portal")}`,
+      },
+    })
       .then((res) => {
+        if (res.status === 401 || res.status === 403) {
+          toast.error('unauthorized access.Please verify your authorization')
+          logOut();
+        }
         return res.json();
       })
       .then((data) => {
         console.log(data);
         setMyriviews(data);
       });
-  }, [user?.email]);
+  }, [user?.email,logOut]);
 
   const handleDelete = (id) => {
     const proceed = window.confirm(
@@ -40,6 +48,29 @@ const MyRiviews = () => {
     }
   };
 
+
+
+  // const handleUpdate = id =>{
+  //   fetch(`http://localhost:5000/riviews/${id}`, {
+  //   method: "PATCH",
+  //   headers: {
+  //     "content-type": "application/json",
+  //   },
+  //   body: JSON.stringify(riviews),
+  // })
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log(data);
+  //     if (data.modifiedCount) {
+  //       toast.success(`Succefully updated`);
+  //       navigate("/services");
+  //     }
+  //   })
+  //   .catch((err) => {
+  //     toast.error(err.message);
+  //   });
+
+  // }
 
 
   return (
