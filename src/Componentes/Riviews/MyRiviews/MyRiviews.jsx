@@ -72,28 +72,35 @@ const MyRiviews = () => {
 
   return (
     <div className="container mx-auto">
-      <h3 className="text-center py-6 font-bold">
-        My Reviews Info : 
-      </h3>
-      <table className="min-w-full text-xs">
-        <thead className="bg-gray-700 text-white">
-          <tr className="text-center">
-            <th className="p-3">Service Name</th>
-            <th className="p-3">Client Name</th>
-            <th className="p-3 text-center">Feeback</th>
-            <th className="p-3 text-center">Update</th>
-          </tr>
-        </thead>
-        <tbody className="text-center">
-          {myRiviews?.map((myriview) => (
-            <RiviewTable
-              key={myriview._id}
-              myriview={myriview}
-              handleDelete={handleDelete}
-            ></RiviewTable>
-          ))}
-        </tbody>
-      </table>
+     {
+      myRiviews.length === 0 && <> <div className="h-80 flex items-center justify-center"><h3 className="text-center font-bold mt-10 mb-5 text-red-600 text-lg">
+      Cuurently no riviews were addded !!!
+    </h3></div></>
+     }
+     {
+      myRiviews && myRiviews.length ===1 &&<><h3 className="text-center py-6 font-bold">
+      My Reviews Info : 
+    </h3>
+    <table className="min-w-full text-xs">
+      <thead className="bg-gray-700 text-white">
+        <tr className="text-center">
+          <th className="p-3">Service Name</th>
+          <th className="p-3">Client Name</th>
+          <th className="p-3 text-center">Feeback</th>
+          <th className="p-3 text-center">Update</th>
+        </tr>
+      </thead>
+      <tbody className="text-center">
+        {myRiviews?.map((myriview) => (
+          <RiviewTable
+            key={myriview._id}
+            myriview={myriview}
+            handleDelete={handleDelete}
+          ></RiviewTable>
+        ))}
+      </tbody>
+    </table></>
+     }
     </div>
   );
 };
