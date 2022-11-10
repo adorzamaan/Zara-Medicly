@@ -1,8 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Toaster } from "react-hot-toast";
-import { PhotoProvider, PhotoView } from "react-photo-view";
-import "react-photo-view/dist/react-photo-view.css";
 import App from "./App";
 import AuthProvider from "./AuthProvider/AuthProvider.js";
 import "./index.css";
@@ -13,9 +11,6 @@ root.render(
     <AuthProvider>
       <App />
       <Toaster position="top-center"></Toaster>
-      <PhotoProvider>
-        <PhotoView></PhotoView>
-      </PhotoProvider>
     </AuthProvider>
   </React.StrictMode>
 );

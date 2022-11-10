@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { authContext } from "../../../AuthProvider/AuthProvider";
+import useTitle from "../../CustomHook/useTitle";
 import RiviewTable from "./RiviewTable/RiviewTable";
 
 const MyRiviews = () => {
   const { user } = useContext(authContext);
   const [myRiviews, setMyriviews] = useState([]);
+  useTitle('My Riviews')
 
   useEffect(() => {
     fetch(`http://localhost:5000/riviews?email=${user?.email}`)

@@ -1,10 +1,12 @@
 import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { authContext } from "../../../AuthProvider/AuthProvider";
+import useTitle from "../../CustomHook/useTitle";
 
 const AddService = () => {
   const { user } = useContext(authContext);
   const [addService, setAddService] = useState([]);
+  useTitle('Add Service')
 
   const handleAddService = (e) => {
     e.preventDefault();

@@ -112,27 +112,25 @@ const ServiceDetails = () => {
           <h3 className="text-center font-bold mt-10 mb-5 text-red-600">
             Cuurently riview not available in this service!!!!
           </h3>
-        ) : (
+        ) : <>
           <h3 className="text-center font-bold mt-10 mb-5">
             Our previous Customer Feedback{" "}
           </h3>
-        )}
-        {!user && (
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
+          {singleriviews?.map((riview) => (
+            <Riviews riview={riview} key={riview._id}></Riviews>
+          ))}
+        </div>
+        </>}
+        {/* {!user && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
             {riviewsitem?.map((riview) => (
               <Riviews riview={riview} key={riview._id}></Riviews>
             ))}
           </div>
-        )}
+        )} */}
       </>
 
-      {user && user.uid && (
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-          {singleriviews?.map((riview) => (
-            <Riviews riview={riview} key={riview._id}></Riviews>
-          ))}
-        </div>
-      )}
 
       {user && user.uid && (
         <div className="flex justify-center my-10">

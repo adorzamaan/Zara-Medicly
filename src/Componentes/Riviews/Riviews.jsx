@@ -33,7 +33,7 @@ const Riviews = ({riview}) => {
           </div>
           <div className="p-2 space-y-2 text-sm text-gray-400">
             <p>
-             {riview?.feedback} {riview.servicename}
+             {riview?.feedback} 
             </p>
           </div>
         </div>
