@@ -47,7 +47,9 @@ const Routes = () => {
         {
           path: "/allservices/:id",
           loader: ({ params }) => {
-            return fetch(`http://localhost:5000/allservices/${params.id}`);
+            return fetch(
+              `https://doctor-portal-server-six.vercel.app/allservices/${params.id}`
+            );
           },
           element: <ServiceDetails></ServiceDetails>,
         },
@@ -75,7 +77,9 @@ const Routes = () => {
         {
           path: "/updatedriview/:id",
           loader: ({ params }) => {
-            return fetch(`http://localhost:5000/riviews/${params.id}`);
+            return fetch(
+              `https://doctor-portal-server-six.vercel.app/riviews/${params.id}`
+            );
           },
           element: (
             <PrivateRoutes>
@@ -90,7 +94,7 @@ const Routes = () => {
         // {
         //   path: "/riviews/:id",
         //   loader: ({ params }) => {
-        //     return fetch(`http://localhost:5000/riviews/${params.id}`);
+        //     return fetch(`https://doctor-portal-server-six.vercel.app/riviews/${params.id}`);
         //   },
         //   element: <ServiceDetails></ServiceDetails>,
         // },

@@ -6,10 +6,9 @@ const MyServices = () => {
   const { myservices, setMyServices } = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allservices?email=${user?.email}`)
+    fetch(`https://doctor-portal-server-six.vercel.app/allservices?email=${user?.email}`)
       .then((res) => res.json())
       .then(data =>{
-        console.log(data);
         setMyServices(data)
       })
   }, [user?.email]);

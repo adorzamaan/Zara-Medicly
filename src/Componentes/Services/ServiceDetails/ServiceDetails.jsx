@@ -6,12 +6,9 @@ import Riviews from "../../Riviews/Riviews";
 import "./serviceDetails.css";
 const ServiceDetails = () => {
   const { user } = useContext(authContext);
-  // console.log(user);
   const [riviewsitem, setRiviews] = useState([]);
-  console.log(riviewsitem);
   const [singleriviews, setSingleRiviews] = useState([]);
   const serviceDetail = useLoaderData();
-  // console.log(serviceDetail);
   const { _id, service } = serviceDetail;
 
   const handleRiview = (e) => {
@@ -21,7 +18,6 @@ const ServiceDetails = () => {
     // const email = form.email.value;
     const photourl = form.photoURL.value;
     const feedback = form.feedback.value;
-    console.log(name, photourl);
     const riviews = {
       name,
       servicename: service,
@@ -30,7 +26,7 @@ const ServiceDetails = () => {
       photourl,
       feedback,
     };
-    fetch("http://localhost:5000/riviews", {
+    fetch("https://doctor-portal-server-six.vercel.app/riviews", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -39,7 +35,6 @@ const ServiceDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         toast.success("Thanks for the feedback");
         form.reset();
       })
@@ -48,7 +43,7 @@ const ServiceDetails = () => {
       });
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews`)
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews`)
       .then((res) => res.json())
       .then((data) => {
         setRiviews(data);
@@ -58,7 +53,7 @@ const ServiceDetails = () => {
       });
   }, []);
   // useEffect(() => {
-  //   fetch(`http://localhost:5000/riviews`)
+  //   fetch(`https://doctor-portal-server-six.vercel.app/riviews`)
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setRiviews(data);
@@ -69,7 +64,7 @@ const ServiceDetails = () => {
   // }, [riviews]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews/${_id}`)
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
         // setLoading(true)
@@ -136,7 +131,7 @@ const ServiceDetails = () => {
         <div className="flex justify-center my-10">
           <form
             onSubmit={handleRiview}
-            className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
+            className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12 drop-shadow-sm"
           >
             <div>
               <h3 className="font-bold">

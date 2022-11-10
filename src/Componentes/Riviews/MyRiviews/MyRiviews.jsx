@@ -10,7 +10,7 @@ const MyRiviews = () => {
   useTitle('My Riviews')
 
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews?email=${user?.email}`,{
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews?email=${user?.email}`,{
       headers: {
         authorization: `Bearer ${localStorage.getItem("doctor-portal")}`,
       },
@@ -23,7 +23,6 @@ const MyRiviews = () => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         setMyriviews(data);
       });
   }, [user?.email,logOut]);
@@ -33,12 +32,11 @@ const MyRiviews = () => {
       `Hey ${user?.email} Are you sure want delete ?`
     );
     if (proceed) {
-      fetch(`http://localhost:5000/riviews/${id}`, {
+      fetch(`https://doctor-portal-server-six.vercel.app/riviews/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
         .then((data) => {
-          console.log(data);
           if (data.deletedCount) {
             toast.success("Deleted Successfully");
             const remaining = myRiviews.filter((odr) => odr._id !== id);
@@ -51,7 +49,7 @@ const MyRiviews = () => {
 
 
   // const handleUpdate = id =>{
-  //   fetch(`http://localhost:5000/riviews/${id}`, {
+  //   fetch(`https://doctor-portal-server-six.vercel.app/riviews/${id}`, {
   //   method: "PATCH",
   //   headers: {
   //     "content-type": "application/json",
@@ -60,7 +58,6 @@ const MyRiviews = () => {
   // })
   //   .then((res) => res.json())
   //   .then((data) => {
-  //     console.log(data);
   //     if (data.modifiedCount) {
   //       toast.success(`Succefully updated`);
   //       navigate("/services");
@@ -76,7 +73,7 @@ const MyRiviews = () => {
   return (
     <div className="container mx-auto">
       <h3 className="text-center py-6 font-bold">
-        My Reviews Info : {myRiviews.length}
+        My Reviews Info : 
       </h3>
       <table className="min-w-full text-xs">
         <thead className="bg-gray-700 text-white">

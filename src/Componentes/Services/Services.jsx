@@ -9,7 +9,7 @@ const Services = () => {
   useTitle("Services");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allservices`)
+    fetch(`https://doctor-portal-server-six.vercel.app/allservices`)
       .then((res) => res.json())
       .then((data) => {
         setServices(data);
@@ -21,7 +21,7 @@ const Services = () => {
   }, [services]);
 
   return (
-    <div className="container mx-auto my-14">
+    <div className="container mx-auto my-8">
      {
       loadingServices ? <LoadingSpinner></LoadingSpinner> :<> <div className="sec_title text-center py-8">
       <span className="font-medium">Provided</span>

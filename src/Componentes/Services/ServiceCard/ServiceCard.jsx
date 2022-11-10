@@ -9,7 +9,7 @@ const ServiceCard = ({ service }) => {
       {/* <img src={service?.img} alt="/" className="rounded-t-3xl w-full h-60" /> */}
 
      <PhotoProvider>
-       <PhotoView src={service?.img} key={service._id} className="rounded-t-3xl w-full h-60">
+       <PhotoView src={service?.img} key={service._id} className="rounded-t-3xl w-full h-auto">
       <img src={service?.img} alt="/" className="rounded-t-3xl w-full h-60" />
       </PhotoView>
      </PhotoProvider>

@@ -16,7 +16,6 @@ const AddService = () => {
     const timing = form.timing.value;
     const serviceFee = form.serviceFee.value;
     const detail = form.detail.value;
-    console.log(service, detail, img, timing, serviceFee);
     const serviceitem = {
       service,
       img,
@@ -25,7 +24,7 @@ const AddService = () => {
       detail,
       email: user.email,
     };
-    fetch("http://localhost:5000/allservices", {
+    fetch("https://doctor-portal-server-six.vercel.app/allservices", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,6 +35,7 @@ const AddService = () => {
       .then((data) => {
         setAddService(data);
         toast.success("Successfully Added");
+        form.reset()
       })
       .catch((err) => {
         toast.error("couldnot Added product,Please try again");

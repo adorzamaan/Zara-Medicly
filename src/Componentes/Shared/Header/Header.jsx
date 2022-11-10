@@ -165,7 +165,7 @@ const handleLogOut = ()=>{
       <div
         className={`list_menu md:hidden absolute duration-500 ease-linear  w-full ${
           open
-            ? "top-16 w-full left-0 h-auto border-0 bg-purple-700"
+            ? "top-16 w-full left-0 h-auto border-0 bg-gray-700"
             : "top-[-350px]"
         }`}
       >
@@ -177,23 +177,43 @@ const handleLogOut = ()=>{
           >
             Home{" "}
           </NavLink>
-          <NavLink
-            rel="noopener noreferrer"
-            to="/courses"
-            className="flex items-center px-4 -mb-1"
-          >
-            Courses
-          </NavLink>
-          <NavLink to="/faq" className="flex items-center px-4 -mb-1 ">
-            FAQ
-          </NavLink>
+          <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/services"
+              className="flex items-center px-4 -mb-1"
+            >
+              Services
+            </NavLink>
+          </li>
+        
 
-          <NavLink to="/blog" className="flex items-center px-4 -mb-1">
-            Blog
-          </NavLink>
-
+          <li className="flex">
+            <NavLink to="/blog" className="flex items-center px-4 -mb-1">
+              Blog
+            </NavLink>
+          </li>
           {
-          user && user.uid ? <> <li className="flex">
+          user && user.uid ? <> 
+        <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/addservice"
+              className="flex items-center px-4 -mb-1"
+            >
+              Add Service
+            </NavLink>
+          </li>
+           <li className="flex">
+            <NavLink
+              rel="noopener noreferrer"
+              to="/myriviews"
+              className="flex items-center px-4 -mb-1"
+            >
+              My riviews
+            </NavLink>
+          </li>
+          <li className="flex">
           <Link onClick={handleLogOut}
             rel="noopener noreferrer"
             className="flex items-center px-4 -mb-1"
@@ -201,6 +221,9 @@ const handleLogOut = ()=>{
             Log Out
           </Link>
         </li>
+        <li className="flex">
+            <Link to="/profile" className="flex items-center px-2 -mb-1"><UserCircleIcon className='bg-custom text-white w-5 h-5 rounded-full'></UserCircleIcon></Link>
+          </li>
 </>:<><li className="flex">
             <Link to="/profile" className="flex items-center px-2 -mb-1"></Link>
           </li>

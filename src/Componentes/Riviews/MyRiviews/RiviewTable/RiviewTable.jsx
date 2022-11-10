@@ -6,7 +6,7 @@ const RiviewTable = ({ myriview, handleDelete,handleUpdateRiview }) => {
   const {sericeID, _id } = myriview;
 const [singleRiview,setSingleRiview] = useState({})
 useEffect(()=>{
-    fetch(`http://localhost:5000/riviews/${sericeID}`)
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${sericeID}`)
     .then(res => res.json())
     .then(data =>{
         setSingleRiview(data)

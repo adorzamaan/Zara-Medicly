@@ -15,17 +15,15 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    // console.log(name,password,email);
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
             // toast.success("Succefully log in");
             // navigate(from, { replace: true });
         const currentUser = {
           email: user.email,
         };
-        fetch("http://localhost:5000/jwt", {
+        fetch("https://doctor-portal-server-six.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -34,7 +32,6 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             localStorage.setItem("doctor-portal", data.token);
             toast.success("Succefully log in");
             navigate(from, { replace: true });
@@ -44,7 +41,6 @@ const Login = () => {
       })
       .catch((err) => {
         toast.error(err.message);
-        console.log(err.message);
       });
   };
 
@@ -56,7 +52,7 @@ const handlegoogleSignIn = ()=>{
     const currentUser = {
       email: user.email,
     };
-    fetch("http://localhost:5000/jwt", {
+    fetch("https://doctor-portal-server-six.vercel.app/jwt", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -65,7 +61,6 @@ const handlegoogleSignIn = ()=>{
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         localStorage.setItem("doctor-portal", data.token);
         toast.success("Succefully log in");
         navigate(from, { replace: true });

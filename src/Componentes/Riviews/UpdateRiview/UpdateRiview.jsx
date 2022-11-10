@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 
 const UpdateRiview = () => {
-  const navigate = useNavigate();
   const updateRiview = useLoaderData();
-  console.log(updateRiview);
   const { _id } = updateRiview;
   const [riviews, setRiviews] = useState([]);
 
@@ -15,15 +13,14 @@ const UpdateRiview = () => {
     const name = form.clientName.value;
     const photourl = form.photoURL.value;
     const feedback = form.feedback.value;
-    console.log(name, photourl);
     const riviews = {
       name,
       photourl,
       feedback,
     };
 
-    fetch(`http://localhost:5000/riviews/${_id}`, {
-      method: "PATCH",
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
@@ -31,7 +28,6 @@ const UpdateRiview = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         
       })
       .catch((err) => {
@@ -40,7 +36,7 @@ const UpdateRiview = () => {
   };
 
   useEffect(() => {
-    fetch(`http://localhost:5000/riviews/${_id}}`)
+    fetch(`https://doctor-portal-server-six.vercel.app/riviews/${_id}}`)
       .then((res) => res.json())
       .then((data) => {
         setRiviews(data);
