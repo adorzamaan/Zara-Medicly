@@ -20,8 +20,9 @@ Hosted in Firebase Live Link -> [Dr. Zara Medicly](https://doctor-portal-f61de.w
   - JS Library (React js-to update content dynamically)
   - several other dependencies
 - Back end :
-  - Nodejs,Express,and mongoDB
-  - Css
+  - Nodejs
+  - Express
+  - Databse-mongoDB
 
 ## Resources & Credits
 
