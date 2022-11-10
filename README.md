@@ -1,4 +1,4 @@
-# Full stack Dr.Zara Medicly system management Repository
+# Full stack Medicly system management
 
 Our goal is to provide high-quality, safe, and individualized care in an integrated and forward-looking medical facility that at the same time supports the local community.
 
