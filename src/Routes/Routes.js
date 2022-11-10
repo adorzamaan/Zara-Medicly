@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Blog from "../Componentes/Blog/Blog";
 import Home from "../Componentes/Home/Home";
 import MyRiviews from "../Componentes/Riviews/MyRiviews/MyRiviews";
 import UpdateRiview from "../Componentes/Riviews/UpdateRiview/UpdateRiview";
@@ -65,11 +66,23 @@ const Routes = () => {
         },
         {
           path: "/myriviews",
-          element: <MyRiviews></MyRiviews>,
+          element: (
+            <PrivateRoutes>
+              <MyRiviews></MyRiviews>
+            </PrivateRoutes>
+          ),
         },
         {
           path: "/updatedriview",
-          element: <UpdateRiview></UpdateRiview>,
+          element: (
+            <PrivateRoutes>
+              <UpdateRiview></UpdateRiview>
+            </PrivateRoutes>
+          ),
+        },
+        {
+          path: "/blog",
+          element: <Blog></Blog>,
         },
         // {
         //   path: "/riviews/:id",

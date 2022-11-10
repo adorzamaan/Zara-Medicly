@@ -20,14 +20,32 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        toast.success("Succefully log in");
-        navigate(from, { replace: true });
+            toast.success("Succefully log in");
+            navigate(from, { replace: true });
+        // const currentUser = {
+        //   email: user.email,
+        // };
+        // fetch("http://localhost:5000/jwt", {
+        //   method: "POST",
+        //   headers: {
+        //     "content-type": "application/json",
+        //   },
+        //   body: JSON.stringify(currentUser),
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => {
+        //     console.log(data);
+        //     localStorage.setItem("doctor-potal", data.token);
+        //     toast.success("Succefully log in");
+        //     navigate(from, { replace: true });
+        //   });
+
         form.reset();
       })
       .catch((err) => {
         toast.error(err.message);
         console.log(err.message);
-      })
+      });
   };
 
   return (

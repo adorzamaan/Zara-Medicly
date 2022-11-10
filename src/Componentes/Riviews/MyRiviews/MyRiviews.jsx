@@ -6,10 +6,12 @@ import RiviewTable from "./RiviewTable/RiviewTable";
 const MyRiviews = () => {
   const { user } = useContext(authContext);
   const [myRiviews, setMyriviews] = useState([]);
-  
+
   useEffect(() => {
     fetch(`http://localhost:5000/riviews?email=${user?.email}`)
-      .then((res) => res.json())
+      .then((res) => {
+        return res.json();
+      })
       .then((data) => {
         console.log(data);
         setMyriviews(data);
@@ -37,41 +39,7 @@ const MyRiviews = () => {
   };
 
 
-//   const handleUpdateRiview = e =>{
-//     e.preventDefault();
-//     const form = e.target;
-//     const name = form.clientName.value;
-//     // const email = form.email.value;
-//     const photourl = form.photoURL.value;
-//     const feedback = form.feedback.value;
-//     console.log(name, photourl);
-//     const riviews = {
-//       name,
-//     //   servicename: service,
-//     //   sericeID: _id,
-//       photourl,
-//       feedback,
-//     };
 
-//     fetch(`http://localhost:5000/riviews/${params.id}`,{
-//         method:'PATCH',
-//         headers:{
-//             "content-type":"application/json"
-//         },
-//         body:JSON.stringify(riviews)
-//     })
-//     .then(res => res.json())
-//     .then(data =>{
-//         console.log(data);
-//         toast.success(`Succefully updated ${name}`)
-//         navigate('/allservices')
-//     })
-//     .catch(err =>{
-//         toast.error(err.message)
-//     })
-// }
-
-  
   return (
     <div className="container mx-auto">
       <h3 className="text-center py-6 font-bold">

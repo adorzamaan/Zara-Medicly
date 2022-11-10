@@ -11,14 +11,11 @@ const UpdateRiview = () => {
     e.preventDefault();
     const form = e.target;
     const name = form.clientName.value;
-    // const email = form.email.value;
     const photourl = form.photoURL.value;
     const feedback = form.feedback.value;
     console.log(name, photourl);
     const riviews = {
       name,
-      //   servicename: service,
-      //   sericeID: _id,
       photourl,
       feedback,
     };

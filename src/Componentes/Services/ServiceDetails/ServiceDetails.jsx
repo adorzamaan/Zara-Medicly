@@ -6,11 +6,12 @@ import Riviews from "../../Riviews/Riviews";
 import "./serviceDetails.css";
 const ServiceDetails = () => {
   const { user } = useContext(authContext);
-  console.log(user);
-  const [riviews, setRiviews] = useState([]);
+  // console.log(user);
+  const [riviewsitem, setRiviews] = useState([]);
+  console.log(riviewsitem);
   const [singleriviews, setSingleRiviews] = useState([]);
   const serviceDetail = useLoaderData();
-  console.log(serviceDetail);
+  // console.log(serviceDetail);
   const { _id, service } = serviceDetail;
 
   const handleRiview = (e) => {
@@ -46,7 +47,6 @@ const ServiceDetails = () => {
         toast.error(err.message);
       });
   };
-  // const parmas = useParams()
   useEffect(() => {
     fetch(`http://localhost:5000/riviews`)
       .then((res) => res.json())
@@ -57,21 +57,22 @@ const ServiceDetails = () => {
         toast.error(err.message);
       });
   }, []);
-  useEffect(() => {
-    fetch(`http://localhost:5000/riviews`)
-      .then((res) => res.json())
-      .then((data) => {
-        setRiviews(data);
-      })
-      .catch((err) => {
-        toast.error(err.message);
-      });
-  }, [riviews]);
+  // useEffect(() => {
+  //   fetch(`http://localhost:5000/riviews`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setRiviews(data);
+  //     })
+  //     .catch((err) => {
+  //       toast.error(err.message);
+  //     });
+  // }, [riviews]);
 
   useEffect(() => {
     fetch(`http://localhost:5000/riviews/${_id}`)
       .then((res) => res.json())
       .then((data) => {
+        // setLoading(true)
         setSingleRiviews(data);
       })
       .catch((err) => {
@@ -108,9 +109,9 @@ const ServiceDetails = () => {
 
       <>
         {singleriviews.length === 0 ? (
-         <h3 className="text-center font-bold mt-10 mb-5 text-red-600">
-         Cuurently riview not available !!!!
-       </h3>
+          <h3 className="text-center font-bold mt-10 mb-5 text-red-600">
+            Cuurently riview not available in this service!!!!
+          </h3>
         ) : (
           <h3 className="text-center font-bold mt-10 mb-5">
             Our previous Customer Feedback{" "}
@@ -118,7 +119,7 @@ const ServiceDetails = () => {
         )}
         {!user && (
           <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-            {riviews.map((riview) => (
+            {riviewsitem?.map((riview) => (
               <Riviews riview={riview} key={riview._id}></Riviews>
             ))}
           </div>
@@ -127,7 +128,7 @@ const ServiceDetails = () => {
 
       {user && user.uid && (
         <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 gap-6">
-          {singleriviews.map((riview) => (
+          {singleriviews?.map((riview) => (
             <Riviews riview={riview} key={riview._id}></Riviews>
           ))}
         </div>
@@ -141,37 +142,10 @@ const ServiceDetails = () => {
             className="space-y-6 ng-untouched ng-pristine ng-valid lg:w-6/12 md:w-6/12 sm:w-10/12"
           >
             <div>
-              <h3 className="font-bold">How was your experience? Please let me know !!!</h3>
+              <h3 className="font-bold">
+                How was your experience? Please let me know !!!
+              </h3>
             </div>
-            {/* <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
-            Service Name:
-          </label>
-          <input
-            type="text"
-            name="servicename"
-            id="name"
-            placeholder="name"
-            readOnly
-          defaultValue={serviceDetail.service}
-            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
-          />
-        </div>
-        <div className="space-y-1 text-sm font-medium">
-          <label htmlFor="username" className="block text-black">
-            Email
-          </label>
-          <input
-            type="text"
-            name="email"
-            defaultValue={user.email}
-            id="email"
-            readOnly
-            required
-            placeholder="Email"
-            className="w-full px-4 py-3 rounded-md border text-black focus:border-0"
-          />
-        </div> */}
             <div className="space-y-1 text-sm font-medium">
               <label htmlFor="name" className="block text-black">
                 Your Name:
@@ -221,7 +195,7 @@ const ServiceDetails = () => {
       {!user && (
         <div className="text-center py-6">
           <h3 className="font-medium mr-3">
-            If your want you can share your experience ? Please
+            If you want, you can share your experience ? Please
             <Link
               className="px-8 py-1 my-3 bg-black hover:bg-green-500 text-white"
               to="/login"
